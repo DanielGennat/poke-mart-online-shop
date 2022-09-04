@@ -2,13 +2,11 @@ import Header from "./components/Header";
 import ShoppingItem from "./components/ShoppingItem";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-
-
+import Cart from "./components/Cart";
 
 function App() {
 
   const apiURL = "https://pokeapi.co/api/v2/item/";
-
 
   const [items, setItems] = useState([]);
 
@@ -21,17 +19,30 @@ function App() {
       .catch((error) => console.error(error));
   }, [apiURL]);
 
-  // const itemDetails = items.url;
+  const [shoppingCart, setShoppingCart] = useState([]);
+
+  function addToCart(newItem) {
+    setShoppingCart([...shoppingCart, newItem]);
+  }
 
   return (
     <div>
       <Header />
+      <h2>Cart</h2>
+      <CartContainer>
+        {shoppingCart.map((item) => {
+          return (
+            <Cart key={item.name} name={item.name} details={item.url} />
+          );
+        })}
+      </CartContainer>
+      <h2>Search Items</h2>
       <CardContainer>
-      {items.map((item) => {
-        return (
-      <ShoppingItem key={item.name} name={item.name} details={item.url}/>
-      );
-      })}
+        {items.map((item) => {
+          return (
+            <ShoppingItem key={item.name} name={item.name} details={item.url} onAddItem={addToCart} />
+          );
+        })}
       </CardContainer>
     </div>
   );
@@ -44,3 +55,5 @@ const CardContainer = styled.ul`
   flex-wrap: wrap;
   gap: 10px;
 `;
+
+const CartContainer = styled(CardContainer)``;

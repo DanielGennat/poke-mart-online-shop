@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-export default function ShoppingItem({ details, name, onAddItem }) {
+export default function Cart({ details, name }) {
 
   const [image, setImage] = useState("");
-  const [price, setPrice] = useState([]);
-  const item = {
-    name: name, url: details,
-  };
+  const [price, setPrice] = useState();
 
   useEffect(() => {
     fetch(details)
@@ -21,8 +18,7 @@ export default function ShoppingItem({ details, name, onAddItem }) {
 
   return (
     <Card>
-      <li>{name}<br /><Picture alt="" src={image} /><Price>{price}</Price></li>
-      <button onClick={() => onAddItem(item)}>Add Item</button>
+      <li>{name}<br /><Picture alt="" src={image} /><Price>{price} ¥</Price></li>
     </Card>
   );
 }
@@ -37,9 +33,9 @@ const Card = styled.article`
   font-size: 28px;
   height: 200px;
   width: 200px;
-  border: solid 10px #BCBB6D;
+  border: solid 10px #3A3A3A;
   border-radius: 5px;
-  background: #3A3A3A;
+  background: #BCBB6D;
   color: white;
   padding: 30px;
   gap: 20px;
