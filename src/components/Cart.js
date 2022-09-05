@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-export default function Cart({ details, name }) {
+export default function Cart({ details, name, onRemoveItem }) {
 
   const [image, setImage] = useState("");
   const [price, setPrice] = useState();
@@ -19,6 +19,7 @@ export default function Cart({ details, name }) {
   return (
     <Card>
       <li>{name}<br /><Picture alt="" src={image} /><Price>{price} ¥</Price></li>
+      <button onClick={() => onRemoveItem(name)}>Remove Item</button>
     </Card>
   );
 }

@@ -25,6 +25,10 @@ function App() {
     setShoppingCart([...shoppingCart, newItem]);
   }
 
+  function removeFromCart(name) {
+    setShoppingCart(shoppingCart.filter((item) => item.name !== name));
+  }
+
   return (
     <div>
       <Header />
@@ -32,7 +36,7 @@ function App() {
       <CartContainer>
         {shoppingCart.map((item) => {
           return (
-            <Cart key={item.name} name={item.name} details={item.url} />
+            <Cart key={item.name} name={item.name} details={item.url} onRemoveItem={removeFromCart} />
           );
         })}
       </CartContainer>
