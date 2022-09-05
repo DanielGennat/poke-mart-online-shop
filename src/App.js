@@ -23,6 +23,7 @@ function App() {
 
   function addToCart(newItem) {
     setShoppingCart([...shoppingCart, newItem]);
+
   }
 
   function removeFromCart(name) {
@@ -34,7 +35,7 @@ function App() {
     <div>
       <Header />
       <Routes>
-        <Route path="/" element={<Home items={items} onAddToCart={addToCart} />} />
+        <Route path="/" element={<Home items={items} onAddToCart={addToCart} counter={shoppingCart.length} />} />
         <Route path="/shopping-cart" element={<ShoppingCart shoppingCart={shoppingCart} onRemoveFromCart={removeFromCart} />} />
       </Routes>
     </div>

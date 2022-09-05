@@ -5,9 +5,7 @@ export default function Header() {
     return (
         <Head>
             <H1>Poké Mart Online Shop</H1>
-            <Link to="/shopping-cart">
-                <img alt="" src="https://tcg.pokemon.com/assets/img/home/top-deck/pikachu.jpg" />
-            </Link>
+            <img alt="" src="https://tcg.pokemon.com/assets/img/home/top-deck/pikachu.jpg" />
         </Head>
     )
 };
