@@ -1,8 +1,8 @@
 import Header from "./components/Header";
-import ShoppingItem from "./components/ShoppingItem";
 import { useEffect, useState } from "react";
-import styled from "styled-components";
-import Cart from "./components/Cart";
+import ShoppingCart from "./pages/ShoppingCart";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
 
 function App() {
 
@@ -26,38 +26,19 @@ function App() {
   }
 
   function removeFromCart(name) {
+    console.log(name);
     setShoppingCart(shoppingCart.filter((item) => item.name !== name));
   }
 
   return (
     <div>
       <Header />
-      <h2>Cart</h2>
-      <CartContainer>
-        {shoppingCart.map((item) => {
-          return (
-            <Cart key={item.name} name={item.name} details={item.url} onRemoveItem={removeFromCart} />
-          );
-        })}
-      </CartContainer>
-      <h2>Search Items</h2>
-      <CardContainer>
-        {items.map((item) => {
-          return (
-            <ShoppingItem key={item.name} name={item.name} details={item.url} onAddItem={addToCart} />
-          );
-        })}
-      </CardContainer>
+      <Routes>
+        <Route path="/" element={<Home items={items} onAddToCart={addToCart} />} />
+        <Route path="/shopping-cart" element={<ShoppingCart shoppingCart={shoppingCart} onRemoveFromCart={removeFromCart} />} />
+      </Routes>
     </div>
   );
 }
 
 export default App;
-
-const CardContainer = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-`;
-
-const CartContainer = styled(CardContainer)``;

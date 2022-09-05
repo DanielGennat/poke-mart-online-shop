@@ -1,10 +1,13 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export default function Header() {
     return (
         <Head>
             <H1>Poké Mart Online Shop</H1>
-            <img alt="" src="https://tcg.pokemon.com/assets/img/home/top-deck/pikachu.jpg" />
+            <Link to="/shopping-cart">
+                <img alt="" src="https://tcg.pokemon.com/assets/img/home/top-deck/pikachu.jpg" />
+            </Link>
         </Head>
     )
 };
