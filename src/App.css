@@ -1,0 +1,35 @@
+.App {
+  text-align: center;
+}
+
+body {
+  font-family: sans-serif;
+  color: #3A3A3A;
+}
+
+nav {
+  margin: 3rem;
+}
+
+a {
+  font-family: sans-serif;
+  background: #3A3A3A;
+  border-radius: 0.5rem 0 0.5rem 0;
+  color: #FCD63B;
+  text-decoration: none;
+  padding: 1rem;
+  margin: 0.25rem;
+}
+
+a.active {
+  background: #FCD63B;
+  color: #3A3A3A;
+}
+
+button {
+  background: #FCD63B;
+  border: 0.3rem solid goldenrod;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+}
